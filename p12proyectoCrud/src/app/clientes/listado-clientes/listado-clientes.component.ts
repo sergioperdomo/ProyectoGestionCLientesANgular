@@ -1,11 +1,12 @@
 import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ClientesService } from './../../servicios/clientes.service';
 
 @Component({
   selector: 'app-listado-clientes',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, RouterModule],
   templateUrl: './listado-clientes.component.html',
   styleUrl: './listado-clientes.component.css'
 })
