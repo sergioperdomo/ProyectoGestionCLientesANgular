@@ -35,6 +35,12 @@ button.icon img {
   margin-right: 0.3rem;
 }
 
+.button-and-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 hr {
   margin: 1rem 0;
 }
