@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ClientesService } from './../../servicios/clientes.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CrearClienteComponent implements OnInit {
   // No inicializamos nuestra variable
   form: FormGroup;
 
-  constructor(){ }
+  constructor(private clientesService :ClientesService){ }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -32,6 +33,15 @@ export class CrearClienteComponent implements OnInit {
   }
 
   enviarCliente(): void {
-    console.log(this.form.value);
+    this.clientesService.postClientes(this.form.value)
+                        .subscribe({
+                          next: (res: any) => {
+                            // this.enviarCliente = res;
+                            console.log(res);
+                          },
+                          error: (err: any) => {
+                            console.log(err);
+                          }
+                        })
   }
 }
