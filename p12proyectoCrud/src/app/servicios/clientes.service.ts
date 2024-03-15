@@ -19,4 +19,14 @@ export class ClientesService {
                       })
                     )
   }
+
+  // Método post
+  postClientes(cliente){
+    return this.http.post(this.endPointClientes, cliente)
+                    .pipe(
+                      map((data: any) => {
+                        return data;
+                      })
+                    )
+  }
 }
