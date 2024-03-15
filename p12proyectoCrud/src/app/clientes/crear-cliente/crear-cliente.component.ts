@@ -1,10 +1,8 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ClientesService } from './../../servicios/clientes.service';
-
-
 @Component({
   selector: 'app-crear-cliente',
   standalone: true,
@@ -17,7 +15,7 @@ export class CrearClienteComponent implements OnInit {
   // No inicializamos nuestra variable
   form: FormGroup;
 
-  constructor(private clientesService :ClientesService){ }
+  constructor(private clientesService :ClientesService, private router: Router){ }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -36,8 +34,8 @@ export class CrearClienteComponent implements OnInit {
     this.clientesService.postClientes(this.form.value)
                         .subscribe({
                           next: (res: any) => {
-                            // this.enviarCliente = res;
-                            console.log(res);
+                            // Navegación programatica
+                            this.router.navigate(['/clientes']);
                           },
                           error: (err: any) => {
                             console.log(err);
