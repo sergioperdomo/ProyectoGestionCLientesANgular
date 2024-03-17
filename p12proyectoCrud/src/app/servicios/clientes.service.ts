@@ -20,6 +20,16 @@ export class ClientesService {
                     )
   }
 
+  // Para obtener un solo cliente por medio de su cif(número unico (cc en colombia))
+  getCliente(cif){
+    return this.http.get(this.endPointClientes + '/' + cif)
+                    .pipe(
+                      map((data: any) => {
+                        return data;
+                      })
+                    )
+  }
+
   // Método post
   postClientes(cliente){
     return this.http.post(this.endPointClientes, cliente)
