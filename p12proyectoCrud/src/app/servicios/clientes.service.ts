@@ -39,4 +39,13 @@ export class ClientesService {
                       })
                     )
   }
+
+  putClientes(cliente, cif){
+    return this.http.put(this.endPointClientes + '/' + cif, cliente)
+                    .pipe(
+                      map((data: any) => {
+                        return data;
+                      })
+                    )
+                  }
 }
