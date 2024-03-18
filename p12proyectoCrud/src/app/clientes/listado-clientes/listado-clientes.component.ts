@@ -17,14 +17,30 @@ export class ListadoClientesComponent implements OnInit{
   constructor (private clienteService: ClientesService) { }
 
   ngOnInit(): void {
-      this.clienteService.getClientes()
-                          .subscribe({
-                            next: (clientes: any) => {
-                              this.clientes = clientes;
-                            },
-                            error: (err: any) => {
-                              console.log(err);}
-                          })
-                        }
+    this.cargarClientes();
+  }
+
+  cargarClientes(){
+    this.clienteService.getClientes()
+    .subscribe({
+      next: (clientes: any) => {
+        this.clientes = clientes;
+      },
+      error: (err: any) => {
+        console.log(err);}
+    })
+  }
+
+
+  eliminarCliente(cif){
+    this.clienteService.deleteCliente(cif)
+                        .subscribe({
+                          next: () => {
+                            this.cargarClientes();;
+                          },
+                          error: (err: any) => {
+                          console.log(err);}
+                        })
+  }
 }
 
