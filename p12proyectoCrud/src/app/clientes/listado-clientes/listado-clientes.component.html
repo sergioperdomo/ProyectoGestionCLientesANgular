@@ -13,6 +13,7 @@
           <th>Dirección</th>
           <th>Localidad</th>
           <th></th>
+          <th></th>
         </tr>
         <tr *ngFor="let cliente of clientes ">
           <td> {{cliente.nombre}} </td>
@@ -20,6 +21,7 @@
           <td> {{cliente.direccion}} </td>
           <td> {{cliente.localidad}} </td>
           <td><button routerLink="/actualizar-cliente/{{ cliente.cif }}" class="outline">Actualizar</button></td>
+          <td><button (click)="eliminarCliente(cliente.cif)">Eliminar</button></td>
         </tr>
       </table>
     </div>
