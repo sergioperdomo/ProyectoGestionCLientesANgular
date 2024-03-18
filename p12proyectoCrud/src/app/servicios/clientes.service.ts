@@ -48,4 +48,15 @@ export class ClientesService {
                       })
                     )
                   }
+
+  deleteCliente(cif){
+    return this.http.delete(this.endPointClientes + '/' + cif)
+                    .pipe(
+                      map((data: any) => {
+                        return data;
+                      })
+                    )
+  }
 }
+
+
